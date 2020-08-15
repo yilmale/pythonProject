@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from scipy.optimize import brentq
 from ema_workbench.analysis import prim
 
+from ema_workbench.analysis import feature_scoring
+
 
 from ema_workbench import (Model, RealParameter, ScalarOutcome, Constant,
                            ema_logging, MultiprocessingEvaluator)
@@ -214,7 +216,20 @@ if __name__ == '__main__':
     print(box1.resample(15))
     box1.inspect(15)
     box1.inspect(15, style='table')
+    #plt.show()
 
+    # load data
+    from ema_workbench import ema_logging, load_results
+    fn = r'./1000 flu cases with policies.tar.gz'
+    x, outcomes = load_results(fn)
+
+    # we have timeseries so we need scalars
+    y = {'deceased population': outcomes['deceased population region 1'][:, -1],
+         'max. infected fraction': np.max(outcomes['infected fraction R1'], axis=1)}
+
+    scores = feature_scoring.get_feature_scores_all(x, y)
+    print(scores)
+    sns.heatmap(scores, annot=True, cmap='viridis')
     plt.show()
 
 
