@@ -12,7 +12,7 @@ from ema_workbench.analysis import feature_scoring
 
 
 from ema_workbench import (Model, RealParameter, ScalarOutcome, Constant,
-                           ema_logging, MultiprocessingEvaluator)
+                           ema_logging, MultiprocessingEvaluator, perform_experiments)
 from ema_workbench.em_framework.evaluators import MC
 
 
@@ -231,6 +231,8 @@ if __name__ == '__main__':
     print(scores)
     sns.heatmap(scores, annot=True, cmap='viridis')
     plt.show()
+
+
 
 
 
