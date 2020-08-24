@@ -230,7 +230,9 @@ if __name__ == '__main__':
     scores = feature_scoring.get_feature_scores_all(x, y)
     print(scores)
     sns.heatmap(scores, annot=True, cmap='viridis')
-    plt.show()
+    #plt.show()
+
+
 
 
 
