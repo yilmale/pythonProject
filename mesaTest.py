@@ -1,67 +1,123 @@
-from mesa import Agent, Model
-from mesa.time import RandomActivation
-from mesa.space import MultiGrid
-
-class MoneyAgent(Agent):
-    """ An agent with fixed initial wealth."""
-    def __init__(self, unique_id, model):
-        super().__init__(unique_id, model)
-        self.wealth = 1
-
-    def move(self):
-        possible_steps = self.model.grid.get_neighborhood(
-            self.pos,
-            moore=True,
-            include_center=False)
-        new_position = self.random.choice(possible_steps)
-        self.model.grid.move_agent(self, new_position)
-
-    def give_money(self):
-        cellmates = self.model.grid.get_cell_list_contents([self.pos])
-        if len(cellmates) > 1:
-            other = self.random.choice(cellmates)
-            other.wealth += 1
-            self.wealth -= 1
-
-    def step(self):
-        self.move()
-        if self.wealth > 0:
-            self.give_money()
-
-class MoneyModel(Model):
-    """A model with some number of agents."""
-    def __init__(self, N, width, height):
-        self.num_agents = N
-        self.grid = MultiGrid(width, height, True)
-        self.schedule = RandomActivation(self)
-
-        # Create agents
-        for i in range(self.num_agents):
-            a = MoneyAgent(i, self)
-            self.schedule.add(a)
-
-            # Add the agent to a random grid cell
-            x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
-            self.grid.place_agent(a, (x, y))
-
-    def step(self):
-        '''Advance the model by one step.'''
-        self.schedule.step()
-
-
-model = MoneyModel(50, 10, 10)
-for i in range(20):
-    model.step()
-
 import numpy as np
+
 import matplotlib.pyplot as plt
 
-agent_counts = np.zeros((model.grid.width, model.grid.height))
-for cell in model.grid.coord_iter():
-    cell_content, x, y = cell
-    agent_count = len(cell_content)
-    agent_counts[x][y] = agent_count
-plt.imshow(agent_counts, interpolation='nearest')
-plt.colorbar()
+
+from mesa import Model, Agent
+from mesa.time import RandomActivation
+from mesa.space import Grid
+from mesa.datacollection import DataCollector
+from mesa.batchrunner import BatchRunner
+
+
+
+
+class TreeCell(Agent):
+    '''
+    A tree cell.
+
+    Attributes:
+        x, y: Grid coordinates
+        condition: Can be "Fine", "On Fire", or "Burned Out"
+        unique_id: (x,y) tuple.
+
+    unique_id isn't strictly necessary here, but it's good practice to give one to each
+    agent anyway.
+    '''
+
+    def __init__(self, model, pos):
+        '''
+        Create a new tree.
+        Args:
+            pos: The tree's coordinates on the grid. Used as the unique_id
+        '''
+        super().__init__(pos, model)
+        self.pos = pos
+        self.unique_id = pos
+        self.condition = "Fine"
+
+    def step(self):
+        '''
+        If the tree is on fire, spread it to fine trees nearby.
+        '''
+        if self.condition == "On Fire":
+            neighbors = self.model.grid.get_neighbors(self.pos, moore=False)
+            for neighbor in neighbors:
+                if neighbor.condition == "Fine":
+                    neighbor.condition = "On Fire"
+            self.condition = "Burned Out"
+
+
+class ForestFire(Model):
+    '''
+    Simple Forest Fire model.
+    '''
+
+    def __init__(self, height, width, density):
+        '''
+        Create a new forest fire model.
+
+        Args:
+            height, width: The size of the grid to model
+            density: What fraction of grid cells have a tree in them.
+        '''
+        # Initialize model parameters
+        self.height = height
+        self.width = width
+        self.density = density
+
+        # Set up model objects
+        self.schedule = RandomActivation(self)
+        self.grid = Grid(height, width, torus=False)
+        self.dc = DataCollector({"Fine": lambda m: self.count_type(m, "Fine"),
+                                 "On Fire": lambda m: self.count_type(m, "On Fire"),
+                                 "Burned Out": lambda m: self.count_type(m, "Burned Out")})
+
+        # Place a tree in each cell with Prob = density
+        for x in range(self.width):
+            for y in range(self.height):
+                if self.random.random() < self.density:
+                    # Create a tree
+                    new_tree = TreeCell(self, (x, y))
+                    # Set all trees in the first column on fire.
+                    if x == 0:
+                        new_tree.condition = "On Fire"
+                    self.grid[y][x] = new_tree
+                    self.schedule.add(new_tree)
+        self.running = True
+
+    def step(self):
+        '''
+        Advance the model by one step.
+        '''
+        self.schedule.step()
+        self.dc.collect(self)
+        # Halt if no more fire
+        if self.count_type(self, "On Fire") == 0:
+            self.running = False
+
+    @staticmethod
+    def count_type(model, tree_condition):
+        '''
+        Helper method to count trees in a given condition in a given model.
+        '''
+        count = 0
+        for tree in model.schedule.agents:
+            if tree.condition == tree_condition:
+                count += 1
+        return count
+
+
+
+fire = ForestFire(100, 100, 0.6)
+
+fire.run_model()
+
+
+results = fire.dc.get_model_vars_dataframe()
+
+print(results)
+
+results.plot()
+
 plt.show()
