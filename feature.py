@@ -6,6 +6,11 @@ class F(FeatureExpression):
     def __init__(self, fname):
         self.name = fname
 
+class P(FeatureExpression):
+    kind = "Parameter"
+    def __init__(self, fname):
+        self.name = fname
+
 class CompositeExpression(FeatureExpression):
     kind = "Composite"
 
@@ -36,6 +41,8 @@ def evaluate(func,fm,res):
 def traverse(fexpr,res):
     if (isinstance(fexpr, F)):
         if fexpr.name in res: print(fexpr.name, " is selected")
+    elif (isinstance(fexpr, P)):
+        if fexpr.name in res: print(fexpr.name, " is selected")
     elif (isinstance(fexpr, FM)):
         print(fexpr.kind)
         for f in fexpr.op:
@@ -48,9 +55,6 @@ def traverse(fexpr,res):
         print(fexpr.kind)
         for f in fexpr.op:
             traverse(f,res)
-
-
-
 
 
 def M1(self):
@@ -84,42 +88,51 @@ y=MyClass()
 y.M2()
 print(y.i)
 
-from ema_workbench import (Model, RealParameter, ScalarOutcome, Constant,
-                           ema_logging, MultiprocessingEvaluator)
-from ema_workbench.em_framework.evaluators import MC
-from aumain import lake_problem
 
-ps = {'b': (0.1, 0.45, 0.57),
-      'q': (2.0, 4.5, 3.25),
-      'mean': (0.01, 0.05, 0.03),
-      'stdev': (0.001, 0.005, 0.003),
-      'delta': (0.93, 0.99, 0.96),
-      'alpha': (0,0,0.41),
-      'nsamples': (0,0,50),
-      'design': (0,0.1,0.05)
-      }
+ps = {'context':
+        {'b': (0.1, 0.45, 0.57),
+        'q': (2.0, 4.5, 3.25),
+        'mean': (0.01, 0.05, 0.03)
+         },
+      'design':
+        {'stdev': (0.001, 0.005, 0.003),
+          'delta': (0.93, 0.99, 0.96)
+        },
+      'constants':
+        {'nsamples': (0,0,50),
+         'alpha': (0,0,0.41)
+        },
+      'outcomes':
+        {'max_P':  (),
+         'utility': (),
+         'inertia': (),
+         'reliability': ()
+        }
+}
 
 pft = FM('ParameterFeatureTree',[
           Mandatory([FM('context',
-                        [Optional([F('b'),F('q'),F('mean'),F('stdev'),F('delta')])])]),
+                        [Optional([P('b'),P('q'),P('mean')])])]),
           Mandatory([FM('design',
-                        [Mandatory([F(str(i)) for i in range(10)])])]),
-          Mandatory([FM('outcome',
-                        [Optional([F('max_P'),F('utility'),F('inertia'),F('reliability')])])]),
+                        [Optional([P('delta'),P('stddev')])])]),
+          Mandatory([FM('outcomes',
+                        [Optional([P('max_P'),P('utility'),P('inertia'),P('reliability')])])]),
           Optional([FM('constants',
-                       [Optional([F('nsamples'),F('alpha')])])])]
+                       [Optional([P('nsamples'),P('alpha')])])])]
          )
 
-x = traverse
-resolution = {'context','b','q','mean','stddev','delta','design'
-              'outcomes','max_P','utility','inertia','reliability',
-              'constants','nsamples','alpha'}
-design = {str(i) for i in range(10)}
 
-resolution = resolution.union(design)
+resolution = {'b','q','mean','stddev','delta',
+              'max_P','utility','inertia','reliability',
+              'nsamples','alpha'}
+
 print(resolution)
 
+x = traverse
 evaluate(x,pft,resolution)
+
+print(ps['context']['b'][0])
+
 
 
 
