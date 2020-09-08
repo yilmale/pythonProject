@@ -73,6 +73,8 @@ if __name__ == '__main__':
     experiments, outcomes = res
     data= experiments[['n', 'p']]
 
+    data.to_csv('out.csv',index=False)
+
 #-----------------------FeatureScoring-------------------------------------------
     z = feature_scoring.get_feature_scores_all(x=data,y=outcomes)
 
