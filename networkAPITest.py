@@ -30,7 +30,6 @@ def simulate_ER(n = 10, p=0.5, f=0.3, replications = 30,):
     return sum(outcomes)/len(outcomes)
 
 
-
 problem = {
     'num_vars': 3,
     'names': ['n', 'p', 'f'],
@@ -48,8 +47,10 @@ for i, X in enumerate(param_values):
 Si = sobol.analyze(problem,Y)
 print(Si['S1'])
 
-for v in Si.items():
-    print(v[1])
+print("x1-x2:", Si['S2'][0,1])
+print("x1-x3:", Si['S2'][0,2])
+print("x2-x3:", Si['S2'][1,2])
+
 
 
 
