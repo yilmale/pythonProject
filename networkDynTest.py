@@ -64,12 +64,12 @@ if __name__ == '__main__':
     n_scenarios = 10
     n_policies = 10
 
-    #res = perform_experiments(models, n_scenarios, n_policies)
-
-    with MultiprocessingEvaluator(model) as evaluator:
-        res = evaluator.perform_experiments(n_scenarios, n_policies,
-                                            levers_sampling=MC)
-
+    res = perform_experiments(model, n_scenarios, n_policies)
+    """ 
+        with MultiprocessingEvaluator(model) as evaluator:
+            res = evaluator.perform_experiments(n_scenarios, n_policies,
+                                             levers_sampling=MC)
+    """
     experiments, outcomes = res
     data= experiments[['n', 'p']]
 

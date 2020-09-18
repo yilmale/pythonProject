@@ -73,8 +73,8 @@ W = np.zeros([param_values.shape[0]])
 
 for i, X in enumerate(param_values):
     Y[i] = simulate_ER(X[0],X[1],X[3],replications=30)
-    Z[i] = simulate_PreferentialAttachment(int(X[0]),int(X[2]),X[3],replications=30)
-    W[i] = simulate_PreferentialAttachment(int(X[0]), int(X[4]), X[1], replications=30)
+    #Z[i] = simulate_PreferentialAttachment(int(X[0]),int(X[2]),X[3],replications=30)
+    #W[i] = simulate_PreferentialAttachment(int(X[0]), int(X[4]), X[1], replications=30)
 
 Si = sobol.analyze(problem,Y)
 print(Si['S1'])
