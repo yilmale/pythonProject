@@ -114,6 +114,7 @@ if __name__ == '__main__':
     # import R's "base" package
     base = importr('base')
 
+
     # import R's "utils" package
     utils = importr('utils')
 
@@ -171,7 +172,7 @@ if __name__ == '__main__':
             testdt <- function(x) {
                 library(party)
                 png(file = "decision_tree.png")
-                output = ctree(nativeSpeaker ~ age + shoeSize + score, data = x)
+                output = ctree(nativeSpeaker ~ age + score, data = x)
                 plot(output)
                 dev.off()
                 output
