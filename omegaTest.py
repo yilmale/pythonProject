@@ -1,18 +1,42 @@
+from __future__ import (absolute_import, print_function, division,
+                        unicode_literals)
 from omegaPythonTools import pyomega
-from xml.dom.minidom import parse
-import xml.dom.minidom
+from omegaPythonTools import omiEditor
+
+from ema_workbench import (Model, RealParameter, MultiprocessingEvaluator, CategoricalParameter,
+                           IntegerParameter, ScalarOutcome, ArrayOutcome, Constant, ema_logging,
+                           perform_experiments)
+from ema_workbench.em_framework.evaluators import MC
+
+from ema_workbench.analysis import feature_scoring
+from ema_workbench.analysis import prim
+
+from ema_workbench.analysis import scenario_discovery_util as sdutil
+
+import pandas as pd
+import seaborn as sns
+
+import numpy as np
+
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import export_text
+
 
 omiFilePath = 'C:\OMEGA\OMEGA\MODELS\SRBM\SCUD_Variants\scudb\scudb.omi'
-outFilePath = 'C:\OMEGA\OMEGA\Temp'
-omegaBin = 'C:\OMEGA\OMEGA'
+omegaDirectory = 'C:\OMEGA\OMEGA'
 executablePath = 'C:\OMEGA\OMEGA\omega.exe'
+modelsDirectory = 'C:\OMEGA\OMEGA\MODELS'
 
 ''' 
 pyomega(omiFilename=omiFilePath, omegaDirectory=omegaBin,
         outputDirectory=outFilePath)
 '''
 
-o = pyomega(omiFilename=omiFilePath, exe=executablePath)
+e = omiEditor(omiFilePath)
+e.show()
+
+o = pyomega(omiFilename=omiFilePath, omegaDirectory= omegaDirectory)
 o.run()
 df = o.data.getData()
 df.to_csv('outTest.csv')
@@ -29,26 +53,6 @@ for ind in thrust.index:
 
 print(thrust[['Propulsion:deliveredThrust']])
 
-inputSpec = o.omi
-print(inputSpec)
-
-#DOMTree = xml.dom.minidom.parse('.\scudb.omi')
-#collection = DOMTree.documentElement
-
-#variables = collection.getElementsByTagName("variable")
-
-
-#for elem in variables:
-#    print(elem.toxml())
-#    print(elem.attributes['name'].value)
-#    for c in elem.childNodes:
-#        print(c.data)
-
-#newsource = DOMTree.toprettyxml()
-print('--------------------------------------------------------------------')
-#print(newsource)
-
-
 #x= o.omi.get('SCUDB.targetRange')
 #print(x)
 o.omi.set('SCUDB.targetRange', 100000.0)
@@ -57,4 +61,14 @@ o.omi.set('SCUDB.targetRange', 100000.0)
 #print(o.omi)
 
 o.run()
+
+print(o.data.endOfRun['SCUDB'])
+metrics = o.data.endOfRun['SCUDB']
+print(metrics.columns)
+print('*******************************************************')
+print(o.data.events['SCUDB'])
+
+x=o.data.events['SCUDB']
+print(x['eventTime'])
+print(x.columns)
 
