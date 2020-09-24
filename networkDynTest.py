@@ -1,6 +1,7 @@
 from __future__ import (absolute_import, print_function, division,
                         unicode_literals)
 import matplotlib.pyplot as plt
+
 import networkx as nx
 import random
 from ema_workbench import (Model, RealParameter, MultiprocessingEvaluator, CategoricalParameter,
@@ -15,7 +16,12 @@ from ema_workbench.analysis import scenario_discovery_util as sdutil
 
 import pandas as pd
 import seaborn as sns
+
 import numpy as np
+
+from sklearn import tree
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import export_text
 
 def update(g,r):
     count = 0
@@ -107,6 +113,42 @@ if __name__ == '__main__':
     box1.inspect(7,style='table')
     #plt.show()
 
+# -------------------------------------------------------
+
+airq = pd.read_csv("Airq.csv")
+x= pd.concat([airq['Ozone'],airq['Wind'],airq['Temp']],axis=1,keys=['Ozone','Wind','Temp'])
+ozon = x['Ozone'].to_list()
+wind = x['Wind'].to_list()
+temp = x['Temp'].to_list()
+
+inp = zip(wind,temp)
+C = []
+for i in inp:
+    C.append(list(i))
+
+print(C)
+print(ozon)
+
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(C, ozon)
+
+r = export_text(clf,feature_names=['wind','temp'],max_depth=2)
+
+print(r)
+
+print(clf.feature_importances_)
+print(clf.n_classes_)
+
+
+from sklearn.datasets import load_iris
+iris = load_iris()
+X, y = load_iris(return_X_y=True)
+print(X)
+print(y)
+clf = tree.DecisionTreeClassifier(random_state=0, max_depth=3)
+clf = clf.fit(X,y)
+r = export_text(clf)
+print(r)
 
 
 
