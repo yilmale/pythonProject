@@ -71,8 +71,8 @@ if __name__ == '__main__':
 
     #model.constants = [Constant('replications', 10)]
 
-    n_scenarios = 3
-    n_policies = 3
+    n_scenarios = 10
+    n_policies = 10
 
     res = perform_experiments(model, n_scenarios, n_policies)
 
