@@ -13,7 +13,7 @@ from ema_workbench.analysis import feature_scoring
 from ema_workbench.analysis import prim
 
 from ema_workbench.analysis import scenario_discovery_util as sdutil
-
+import types
 import pandas as pd
 import seaborn as sns
 
@@ -55,12 +55,25 @@ def setUp(*arg):
     for i in range(0, len(arg)):
         print('value of ', mapper[i], ' is ', arg[i])
 
+def simulate(**arg):
+    Sf = 0
+    f = 0.2
+    n = arg['n']
+    p = arg['p']
+    random.seed()
+    removeCnt = int(n * f)
+    er = update(nx.erdos_renyi_graph(n, p), removeCnt)
+    largest_cc = max(nx.connected_components(er), key=len)
+    Sf = len(largest_cc)
+    gd = nx.density(er)
+    return {'density': gd}
+
 if __name__ == '__main__':
     ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
     ema_logging.log_to_stderr(ema_logging.INFO)
 
     mapper = {0: 'n', 1: 'p'}
-    model = Model('SimulateER', function=simulate_ER)  # instantiate the model
+    model = Model('SimulateER', function=simulate)  # instantiate the model
     # specify uncertainties
     model.uncertainties = [RealParameter("p", 0.1, 1.0)]
 
@@ -87,4 +100,6 @@ if __name__ == '__main__':
 
     print(data)
     print(y)
+
+
 
