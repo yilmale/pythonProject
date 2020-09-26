@@ -111,9 +111,9 @@
           <variable name="timeToLaunch" locked="false">0.0</variable>
           <fileClassification> UNCLASSIFIED </fileClassification>
           <variable name="targetInputOption" locked="false">3</variable>
-          <variable name="targetRange" locked="false">136128.0931899459</variable>
+          <variable name="targetRange" locked="false">136460.69952517067</variable>
           <variable name="targetAzimuth" locked="false">90.0</variable>
-          <variable name="targetAltitude" locked="false">16883.336889005575</variable>
+          <variable name="targetAltitude" locked="false">19143.01837954284</variable>
           <variable name="computeAimpoint" locked="false">1</variable>
           <variable name="aimpointIterationTol" locked="false">100.0</variable>
           <variable name="enableAimpointIterationOutput">false</variable>
@@ -359,7 +359,7 @@
                 <file type="momentsOfInertia">../../../../OMEGA/OMEGA/MODELS/SRBM/SCUD_Variants/scudbInertia.dat</file>
               </files>
               <variables>
-                <variable name="initialMass" visible="true">5492.131121063783</variable>
+                <variable name="initialMass" visible="true">5620.2673501366635</variable>
                 <variable name="useProductsOfInertia">true</variable>
                 <variable name="useCGShift">true</variable>
                 <variable name="cgRadialOffset" visible="true">0.002484</variable>

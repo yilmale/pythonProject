@@ -36,17 +36,17 @@
           <variable name='Dynamics:eciRelAcceleration[1]' units='m/s^2'
            label='Dynamics:eciRelAcceleration[1]'>-3.39157326e-02</variable>
           <variable name='Dynamics:eciRelAcceleration[2]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[2]'>-9.86076132e-32</variable>
+           label='Dynamics:eciRelAcceleration[2]'>-1.97215226e-31</variable>
           <variable name='Dynamics:eciRelAcceleration[3]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[3]'>-7.47983042e-32</variable>
+           label='Dynamics:eciRelAcceleration[3]'>-1.42037333e-32</variable>
           <variable name='Dynamics:eciRelAngVelBody[1]' units='deg/s'
            label='Dynamics:eciRelAngVelBody[1]'>0.00000000e+00</variable>
           <variable name='Dynamics:eciRelAngVelBody[2]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[2]'>4.17807400e-03</variable>
+           label='Dynamics:eciRelAngVelBody[2]'>4.17807405e-03</variable>
           <variable name='Dynamics:eciRelAngVelBody[3]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[3]'>1.04961805e-06</variable>
+           label='Dynamics:eciRelAngVelBody[3]'>8.06514160e-07</variable>
           <variable name='Dynamics:eciRelEulerAngles.phi' units='deg'
-           label='Dynamics:eciRelEulerAngles.phi'>8.99856061e+01</variable>
+           label='Dynamics:eciRelEulerAngles.phi'>8.99889399e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.psi' units='deg'
            label='Dynamics:eciRelEulerAngles.psi'>3.50835465e-15</variable>
           <variable name='Dynamics:eciRelEulerAngles.theta' units='deg'
@@ -66,11 +66,11 @@
           <variable name='Dynamics:specificForceBody[1]' units='m/s^2'
            label='Dynamics:specificForceBody[1]'>9.78026616e+00</variable>
           <variable name='Dynamics:specificForceBody[2]' units='m/s^2'
-           label='Dynamics:specificForceBody[2]'>-1.50448090e-19</variable>
+           label='Dynamics:specificForceBody[2]'>-1.15602542e-19</variable>
           <variable name='Dynamics:specificForceBody[3]' units='m/s^2'
-           label='Dynamics:specificForceBody[3]'>5.98868564e-16</variable>
+           label='Dynamics:specificForceBody[3]'>5.98868571e-16</variable>
           <variable name='MassProperties:mass' units='kg'
-           label='MassProperties:mass'>5.49213112e+03</variable>
+           label='MassProperties:mass'>5.62026735e+03</variable>
         </variables>
       </event>
       <event name='Missile Liftoff' dataset='SCUDB'>
@@ -78,279 +78,279 @@
           <variable name='eventTime' units='seconds'
            label='Event simTime'>4.80000000e-01</variable>
           <variable name='Aerodynamics:alphat' units='deg'
-           label='Aerodynamics:alphat'>9.99316432e-06</variable>
+           label='Aerodynamics:alphat'>9.84619802e-06</variable>
           <variable name='Propulsion:massBurned' units='kg'
            label='Propulsion:massBurned'>6.29290411e+00</variable>
           <variable name='Dynamics:precessionAngle' units='deg'
-           label='Dynamics:precessionAngle'>8.99389179e+01</variable>
+           label='Dynamics:precessionAngle'>8.99395783e+01</variable>
           <variable name='Dynamics:dynamicPressure' units='N/m^2'
-           label='Dynamics:dynamicPressure'>8.49106597e-05</variable>
+           label='Dynamics:dynamicPressure'>6.97125006e-05</variable>
           <variable name='Dynamics:flightPathAngle' units='deg'
            label='Dynamics:flightPathAngle'>8.99999867e+01</variable>
           <variable name='Dynamics:magLateralSpecificForce' units='m/s^2'
-           label='Dynamics:magLateralSpecificForce'>1.13895232e-08</variable>
+           label='Dynamics:magLateralSpecificForce'>1.09961748e-08</variable>
           <variable name='Dynamics:rangeFromLaunch' units='m'
-           label='Dynamics:rangeFromLaunch'>1.56349096e-12</variable>
+           label='Dynamics:rangeFromLaunch'>1.22248802e-12</variable>
           <variable name='Dynamics:timeSinceLaunch' units='s'
            label='Dynamics:timeSinceLaunch'>4.80000000e-01</variable>
           <variable name='Dynamics:trueTimeOfFlight' units='s'
            label='Dynamics:trueTimeOfFlight'>2.50000000e-03</variable>
           <variable name='Dynamics:vmag' units='m/s'
-           label='Dynamics:vmag'>1.17769518e-02</variable>
+           label='Dynamics:vmag'>1.06710492e-02</variable>
           <variable name='Dynamics:coordinates.alt' units='m'
-           label='Dynamics:coordinates.alt'>5.00001490e+00</variable>
+           label='Dynamics:coordinates.alt'>5.00001317e+00</variable>
           <variable name='Dynamics:coordinates.lat' units='deg'
-           label='Dynamics:coordinates.lat'>2.76134591e-19</variable>
+           label='Dynamics:coordinates.lat'>2.66598136e-19</variable>
           <variable name='Dynamics:coordinates.lon' units='deg'
-           label='Dynamics:coordinates.lon'>-1.40423998e-17</variable>
+           label='Dynamics:coordinates.lon'>-1.09786035e-17</variable>
           <variable name='Dynamics:eciRelAcceleration[1]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[1]'>4.61961406e+00</variable>
+           label='Dynamics:eciRelAcceleration[1]'>4.29016970e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[2]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[2]'>1.61013767e-04</variable>
+           label='Dynamics:eciRelAcceleration[2]'>1.49502493e-04</variable>
           <variable name='Dynamics:eciRelAcceleration[3]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[3]'>1.31099232e-06</variable>
+           label='Dynamics:eciRelAcceleration[3]'>1.27236995e-06</variable>
           <variable name='Dynamics:eciRelAngVelBody[1]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[1]'>-6.83923866e-04</variable>
+           label='Dynamics:eciRelAngVelBody[1]'>-6.79503508e-04</variable>
           <variable name='Dynamics:eciRelAngVelBody[2]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[2]'>2.60326725e-03</variable>
+           label='Dynamics:eciRelAngVelBody[2]'>2.61384450e-03</variable>
           <variable name='Dynamics:eciRelAngVelBody[3]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[3]'>3.13529612e-03</variable>
+           label='Dynamics:eciRelAngVelBody[3]'>3.11400664e-03</variable>
           <variable name='Dynamics:eciRelEulerAngles.phi' units='deg'
-           label='Dynamics:eciRelEulerAngles.phi'>8.99856050e+01</variable>
+           label='Dynamics:eciRelEulerAngles.phi'>8.99889388e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.psi' units='deg'
-           label='Dynamics:eciRelEulerAngles.psi'>2.00276569e-03</variable>
+           label='Dynamics:eciRelEulerAngles.psi'>2.00278359e-03</variable>
           <variable name='Dynamics:eciRelEulerAngles.theta' units='deg'
-           label='Dynamics:eciRelEulerAngles.theta'>-5.15884771e-06</variable>
+           label='Dynamics:eciRelEulerAngles.theta'>-5.12404937e-06</variable>
           <variable name='Dynamics:eciRelPosition[1]' units='m'
            label='Dynamics:eciRelPosition[1]'>6.37814200e+06</variable>
           <variable name='Dynamics:eciRelPosition[2]' units='m'
            label='Dynamics:eciRelPosition[2]'>2.23248696e+02</variable>
           <variable name='Dynamics:eciRelPosition[3]' units='m'
-           label='Dynamics:eciRelPosition[3]'>3.07391861e-14</variable>
+           label='Dynamics:eciRelPosition[3]'>2.96775920e-14</variable>
           <variable name='Dynamics:eciRelVelocity[1]' units='m/s'
-           label='Dynamics:eciRelVelocity[1]'>-4.50259979e-03</variable>
+           label='Dynamics:eciRelVelocity[1]'>-5.60850244e-03</variable>
           <variable name='Dynamics:eciRelVelocity[2]' units='m/s'
            label='Dynamics:eciRelVelocity[2]'>4.65101450e+02</variable>
           <variable name='Dynamics:eciRelVelocity[3]' units='m/s'
-           label='Dynamics:eciRelVelocity[3]'>8.38784706e-10</variable>
+           label='Dynamics:eciRelVelocity[3]'>8.13975230e-10</variable>
           <variable name='Dynamics:specificForceBody[1]' units='m/s^2'
-           label='Dynamics:specificForceBody[1]'>1.44337960e+01</variable>
+           label='Dynamics:specificForceBody[1]'>1.41043516e+01</variable>
           <variable name='Dynamics:specificForceBody[2]' units='m/s^2'
-           label='Dynamics:specificForceBody[2]'>1.13895232e-08</variable>
+           label='Dynamics:specificForceBody[2]'>1.09961748e-08</variable>
           <variable name='Dynamics:specificForceBody[3]' units='m/s^2'
-           label='Dynamics:specificForceBody[3]'>-9.34967489e-15</variable>
+           label='Dynamics:specificForceBody[3]'>-7.41792877e-15</variable>
           <variable name='MassProperties:mass' units='kg'
-           label='MassProperties:mass'>5.48583822e+03</variable>
+           label='MassProperties:mass'>5.61397445e+03</variable>
         </variables>
       </event>
       <event name='End Powered Flight' dataset='SCUDB'>
         <variables>
           <variable name='eventTime' units='seconds'
-           label='Event simTime'>5.52650000e+01</variable>
+           label='Event simTime'>5.23200000e+01</variable>
           <variable name='Aerodynamics:alphat' units='deg'
-           label='Aerodynamics:alphat'>4.87145273e-01</variable>
+           label='Aerodynamics:alphat'>1.54207670e-02</variable>
           <variable name='Propulsion:massBurned' units='kg'
-           label='Propulsion:massBurned'>3.19139979e+03</variable>
+           label='Propulsion:massBurned'>3.01980973e+03</variable>
           <variable name='Dynamics:precessionAngle' units='deg'
-           label='Dynamics:precessionAngle'>8.71703828e+01</variable>
+           label='Dynamics:precessionAngle'>6.68284813e+01</variable>
           <variable name='Dynamics:dynamicPressure' units='N/m^2'
-           label='Dynamics:dynamicPressure'>5.37836253e+04</variable>
+           label='Dynamics:dynamicPressure'>6.69111638e+04</variable>
           <variable name='Dynamics:flightPathAngle' units='deg'
-           label='Dynamics:flightPathAngle'>4.47444911e+01</variable>
+           label='Dynamics:flightPathAngle'>4.53779921e+01</variable>
           <variable name='Dynamics:magLateralSpecificForce' units='m/s^2'
-           label='Dynamics:magLateralSpecificForce'>8.50380652e-01</variable>
+           label='Dynamics:magLateralSpecificForce'>2.87074036e-02</variable>
           <variable name='Dynamics:rangeFromLaunch' units='m'
-           label='Dynamics:rangeFromLaunch'>1.62097386e+04</variable>
+           label='Dynamics:rangeFromLaunch'>1.31239944e+04</variable>
           <variable name='Dynamics:timeSinceLaunch' units='s'
-           label='Dynamics:timeSinceLaunch'>5.52650000e+01</variable>
+           label='Dynamics:timeSinceLaunch'>5.23200000e+01</variable>
           <variable name='Dynamics:trueTimeOfFlight' units='s'
-           label='Dynamics:trueTimeOfFlight'>5.47875000e+01</variable>
+           label='Dynamics:trueTimeOfFlight'>5.18425000e+01</variable>
           <variable name='Dynamics:vmag' units='m/s'
-           label='Dynamics:vmag'>1.31726136e+03</variable>
+           label='Dynamics:vmag'>1.11867856e+03</variable>
           <variable name='Dynamics:coordinates.alt' units='m'
-           label='Dynamics:coordinates.alt'>2.22493381e+04</variable>
+           label='Dynamics:coordinates.alt'>1.88223472e+04</variable>
           <variable name='Dynamics:coordinates.lat' units='deg'
-           label='Dynamics:coordinates.lat'>4.98997211e-06</variable>
+           label='Dynamics:coordinates.lat'>1.06346329e-05</variable>
           <variable name='Dynamics:coordinates.lon' units='deg'
-           label='Dynamics:coordinates.lon'>1.45614559e-01</variable>
+           label='Dynamics:coordinates.lon'>1.17894847e-01</variable>
           <variable name='Dynamics:eciRelAcceleration[1]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[1]'>-1.10830840e+01</variable>
+           label='Dynamics:eciRelAcceleration[1]'>-1.22663344e+01</variable>
           <variable name='Dynamics:eciRelAcceleration[2]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[2]'>-2.61369569e+00</variable>
+           label='Dynamics:eciRelAcceleration[2]'>-2.57012554e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[3]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[3]'>-1.16225722e-02</variable>
+           label='Dynamics:eciRelAcceleration[3]'>-2.70826206e-02</variable>
           <variable name='Dynamics:eciRelAngVelBody[1]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[1]'>2.73920388e+00</variable>
+           label='Dynamics:eciRelAngVelBody[1]'>4.44851616e+00</variable>
           <variable name='Dynamics:eciRelAngVelBody[2]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[2]'>4.19739561e-01</variable>
+           label='Dynamics:eciRelAngVelBody[2]'>-2.69891835e-02</variable>
           <variable name='Dynamics:eciRelAngVelBody[3]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[3]'>1.36446375e-01</variable>
+           label='Dynamics:eciRelAngVelBody[3]'>7.11271391e-02</variable>
           <variable name='Dynamics:eciRelEulerAngles.phi' units='deg'
-           label='Dynamics:eciRelEulerAngles.phi'>8.95935599e+01</variable>
+           label='Dynamics:eciRelEulerAngles.phi'>8.98806269e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.psi' units='deg'
-           label='Dynamics:eciRelEulerAngles.psi'>4.51449301e+01</variable>
+           label='Dynamics:eciRelEulerAngles.psi'>4.49559855e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.theta' units='deg'
-           label='Dynamics:eciRelEulerAngles.theta'>1.45212350e-02</variable>
+           label='Dynamics:eciRelEulerAngles.theta'>2.00449068e-02</variable>
           <variable name='Dynamics:eciRelPosition[1]' units='m'
-           label='Dynamics:eciRelPosition[1]'>6.40024814e+06</variable>
+           label='Dynamics:eciRelPosition[1]'>6.39684903e+06</variable>
           <variable name='Dynamics:eciRelPosition[2]' units='m'
-           label='Dynamics:eciRelPosition[2]'>4.20594575e+04</variable>
+           label='Dynamics:eciRelPosition[2]'>3.75684087e+04</variable>
           <variable name='Dynamics:eciRelPosition[3]' units='m'
-           label='Dynamics:eciRelPosition[3]'>5.53700279e-01</variable>
+           label='Dynamics:eciRelPosition[3]'>1.17941044e+00</variable>
           <variable name='Dynamics:eciRelVelocity[1]' units='m/s'
-           label='Dynamics:eciRelVelocity[1]'>9.18046270e+02</variable>
+           label='Dynamics:eciRelVelocity[1]'>7.88858410e+02</variable>
           <variable name='Dynamics:eciRelVelocity[2]' units='m/s'
-           label='Dynamics:eciRelVelocity[2]'>1.40837568e+03</variable>
+           label='Dynamics:eciRelVelocity[2]'>1.25691762e+03</variable>
           <variable name='Dynamics:eciRelVelocity[3]' units='m/s'
-           label='Dynamics:eciRelVelocity[3]'>-1.71598367e-01</variable>
+           label='Dynamics:eciRelVelocity[3]'>-9.43122247e-02</variable>
           <variable name='Dynamics:specificForceBody[1]' units='m/s^2'
-           label='Dynamics:specificForceBody[1]'>-2.75066118e+00</variable>
+           label='Dynamics:specificForceBody[1]'>-3.55171095e+00</variable>
           <variable name='Dynamics:specificForceBody[2]' units='m/s^2'
-           label='Dynamics:specificForceBody[2]'>-1.83502311e-02</variable>
+           label='Dynamics:specificForceBody[2]'>-2.83330712e-02</variable>
           <variable name='Dynamics:specificForceBody[3]' units='m/s^2'
-           label='Dynamics:specificForceBody[3]'>8.50182641e-01</variable>
+           label='Dynamics:specificForceBody[3]'>4.62083329e-03</variable>
           <variable name='MassProperties:mass' units='kg'
-           label='MassProperties:mass'>2.30073133e+03</variable>
+           label='MassProperties:mass'>2.60045762e+03</variable>
         </variables>
       </event>
       <event name='RV Apogee' dataset='SCUDB'>
         <variables>
           <variable name='eventTime' units='seconds'
-           label='Event simTime'>1.52905000e+02</variable>
+           label='Event simTime'>1.34360000e+02</variable>
           <variable name='Aerodynamics:alphat' units='deg'
-           label='Aerodynamics:alphat'>4.08161549e-01</variable>
+           label='Aerodynamics:alphat'>1.01839055e-01</variable>
           <variable name='Propulsion:massBurned' units='kg'
-           label='Propulsion:massBurned'>3.19139979e+03</variable>
+           label='Propulsion:massBurned'>3.01980973e+03</variable>
           <variable name='Dynamics:precessionAngle' units='deg'
-           label='Dynamics:precessionAngle'>3.91412656e+01</variable>
+           label='Dynamics:precessionAngle'>2.93023909e+01</variable>
           <variable name='Dynamics:dynamicPressure' units='N/m^2'
-           label='Dynamics:dynamicPressure'>5.23709227e+01</variable>
+           label='Dynamics:dynamicPressure'>2.63942843e+02</variable>
           <variable name='Dynamics:flightPathAngle' units='deg'
-           label='Dynamics:flightPathAngle'>-1.21615842e-04</variable>
+           label='Dynamics:flightPathAngle'>-2.92169458e-03</variable>
           <variable name='Dynamics:magLateralSpecificForce' units='m/s^2'
-           label='Dynamics:magLateralSpecificForce'>6.76650079e-04</variable>
+           label='Dynamics:magLateralSpecificForce'>8.24336393e-04</variable>
           <variable name='Dynamics:rangeFromLaunch' units='m'
-           label='Dynamics:rangeFromLaunch'>1.04646624e+05</variable>
+           label='Dynamics:rangeFromLaunch'>7.50339197e+04</variable>
           <variable name='Dynamics:timeSinceLaunch' units='s'
-           label='Dynamics:timeSinceLaunch'>1.52905000e+02</variable>
+           label='Dynamics:timeSinceLaunch'>1.34360000e+02</variable>
           <variable name='Dynamics:trueTimeOfFlight' units='s'
-           label='Dynamics:trueTimeOfFlight'>1.52427500e+02</variable>
+           label='Dynamics:trueTimeOfFlight'>1.33882500e+02</variable>
           <variable name='Dynamics:vmag' units='m/s'
-           label='Dynamics:vmag'>9.07237181e+02</variable>
+           label='Dynamics:vmag'>7.52800836e+02</variable>
           <variable name='Dynamics:coordinates.alt' units='m'
-           label='Dynamics:coordinates.alt'>6.68686815e+04</variable>
+           label='Dynamics:coordinates.alt'>5.07846251e+04</variable>
           <variable name='Dynamics:coordinates.lat' units='deg'
-           label='Dynamics:coordinates.lat'>-7.16394513e-05</variable>
+           label='Dynamics:coordinates.lat'>-3.40612967e-05</variable>
           <variable name='Dynamics:coordinates.lon' units='deg'
-           label='Dynamics:coordinates.lon'>9.40056618e-01</variable>
+           label='Dynamics:coordinates.lon'>6.74041168e-01</variable>
           <variable name='Dynamics:eciRelAcceleration[1]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[1]'>-9.60778000e+00</variable>
+           label='Dynamics:eciRelAcceleration[1]'>-9.65621431e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[2]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[2]'>-2.68936417e-01</variable>
+           label='Dynamics:eciRelAcceleration[2]'>-2.33897630e-01</variable>
           <variable name='Dynamics:eciRelAcceleration[3]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[3]'>6.04923540e-04</variable>
+           label='Dynamics:eciRelAcceleration[3]'>6.05589170e-04</variable>
           <variable name='Dynamics:eciRelAngVelBody[1]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[1]'>1.43514215e+02</variable>
+           label='Dynamics:eciRelAngVelBody[1]'>1.59716592e+02</variable>
           <variable name='Dynamics:eciRelAngVelBody[2]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[2]'>-4.01424344e-01</variable>
+           label='Dynamics:eciRelAngVelBody[2]'>5.36131490e-01</variable>
           <variable name='Dynamics:eciRelAngVelBody[3]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[3]'>-8.39132678e-01</variable>
+           label='Dynamics:eciRelAngVelBody[3]'>3.78208812e-01</variable>
           <variable name='Dynamics:eciRelEulerAngles.phi' units='deg'
-           label='Dynamics:eciRelEulerAngles.phi'>-1.33919463e+02</variable>
+           label='Dynamics:eciRelEulerAngles.phi'>4.14188670e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.psi' units='deg'
-           label='Dynamics:eciRelEulerAngles.psi'>9.17430694e+01</variable>
+           label='Dynamics:eciRelEulerAngles.psi'>9.11733614e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.theta' units='deg'
-           label='Dynamics:eciRelEulerAngles.theta'>-3.72138832e-01</variable>
+           label='Dynamics:eciRelEulerAngles.theta'>-7.80443812e-02</variable>
           <variable name='Dynamics:eciRelPosition[1]' units='m'
-           label='Dynamics:eciRelPosition[1]'>6.44255869e+06</variable>
+           label='Dynamics:eciRelPosition[1]'>6.42742723e+06</variable>
           <variable name='Dynamics:eciRelPosition[2]' units='m'
-           label='Dynamics:eciRelPosition[2]'>1.77583134e+05</variable>
+           label='Dynamics:eciRelPosition[2]'>1.38609175e+05</variable>
           <variable name='Dynamics:eciRelPosition[3]' units='m'
-           label='Dynamics:eciRelPosition[3]'>-8.00508933e+00</variable>
+           label='Dynamics:eciRelPosition[3]'>-3.79649375e+00</variable>
           <variable name='Dynamics:eciRelVelocity[1]' units='m/s'
-           label='Dynamics:eciRelVelocity[1]'>-3.79491453e+01</variable>
+           label='Dynamics:eciRelVelocity[1]'>-2.63764954e+01</variable>
           <variable name='Dynamics:eciRelVelocity[2]' units='m/s'
-           label='Dynamics:eciRelVelocity[2]'>1.37669146e+03</variable>
+           label='Dynamics:eciRelVelocity[2]'>1.22132040e+03</variable>
           <variable name='Dynamics:eciRelVelocity[3]' units='m/s'
-           label='Dynamics:eciRelVelocity[3]'>-2.54510632e-02</variable>
+           label='Dynamics:eciRelVelocity[3]'>-4.99586404e-03</variable>
           <variable name='Dynamics:specificForceBody[1]' units='m/s^2'
-           label='Dynamics:specificForceBody[1]'>-4.10064461e-03</variable>
+           label='Dynamics:specificForceBody[1]'>-2.56514450e-02</variable>
           <variable name='Dynamics:specificForceBody[2]' units='m/s^2'
-           label='Dynamics:specificForceBody[2]'>-6.34942145e-04</variable>
+           label='Dynamics:specificForceBody[2]'>2.56091831e-05</variable>
           <variable name='Dynamics:specificForceBody[3]' units='m/s^2'
-           label='Dynamics:specificForceBody[3]'>-2.33888437e-04</variable>
+           label='Dynamics:specificForceBody[3]'>8.23938504e-04</variable>
           <variable name='MassProperties:mass' units='kg'
-           label='MassProperties:mass'>2.30073133e+03</variable>
+           label='MassProperties:mass'>2.60045762e+03</variable>
         </variables>
       </event>
       <event name='RV Impact' dataset='SCUDB'>
         <variables>
           <variable name='eventTime' units='seconds'
-           label='Event simTime'>2.56955005e+02</variable>
+           label='Event simTime'>2.16469734e+02</variable>
           <variable name='Aerodynamics:alphat' units='deg'
-           label='Aerodynamics:alphat'>3.96525676e-01</variable>
+           label='Aerodynamics:alphat'>2.50837193e-01</variable>
           <variable name='Propulsion:massBurned' units='kg'
-           label='Propulsion:massBurned'>3.19139979e+03</variable>
+           label='Propulsion:massBurned'>3.01980973e+03</variable>
           <variable name='Dynamics:precessionAngle' units='deg'
-           label='Dynamics:precessionAngle'>4.50051022e+01</variable>
+           label='Dynamics:precessionAngle'>2.09316694e+01</variable>
           <variable name='Dynamics:dynamicPressure' units='N/m^2'
-           label='Dynamics:dynamicPressure'>1.27944019e+05</variable>
+           label='Dynamics:dynamicPressure'>5.68111526e+04</variable>
           <variable name='Dynamics:flightPathAngle' units='deg'
-           label='Dynamics:flightPathAngle'>-4.66701157e+01</variable>
+           label='Dynamics:flightPathAngle'>-4.57088392e+01</variable>
           <variable name='Dynamics:magLateralSpecificForce' units='m/s^2'
-           label='Dynamics:magLateralSpecificForce'>1.57861523e+00</variable>
+           label='Dynamics:magLateralSpecificForce'>4.00215032e-01</variable>
           <variable name='Dynamics:rangeFromLaunch' units='m'
-           label='Dynamics:rangeFromLaunch'>1.98512021e+05</variable>
+           label='Dynamics:rangeFromLaunch'>1.36388885e+05</variable>
           <variable name='Dynamics:timeSinceLaunch' units='s'
-           label='Dynamics:timeSinceLaunch'>2.56955005e+02</variable>
+           label='Dynamics:timeSinceLaunch'>2.16469734e+02</variable>
           <variable name='Dynamics:trueTimeOfFlight' units='s'
-           label='Dynamics:trueTimeOfFlight'>2.56477505e+02</variable>
+           label='Dynamics:trueTimeOfFlight'>2.15992234e+02</variable>
           <variable name='Dynamics:vmag' units='m/s'
-           label='Dynamics:vmag'>1.29428472e+03</variable>
+           label='Dynamics:vmag'>1.05702768e+03</variable>
           <variable name='Dynamics:coordinates.alt' units='m'
-           label='Dynamics:coordinates.alt'>1.65482060e+04</variable>
+           label='Dynamics:coordinates.alt'>1.91430183e+04</variable>
           <variable name='Dynamics:coordinates.lat' units='deg'
-           label='Dynamics:coordinates.lat'>4.28105055e-06</variable>
+           label='Dynamics:coordinates.lat'>1.03908096e-05</variable>
           <variable name='Dynamics:coordinates.lon' units='deg'
-           label='Dynamics:coordinates.lon'>1.78326383e+00</variable>
+           label='Dynamics:coordinates.lon'>1.22520220e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[1]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[1]'>-5.54185027e+00</variable>
+           label='Dynamics:eciRelAcceleration[1]'>-7.18582583e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[2]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[2]'>-5.75154799e+00</variable>
+           label='Dynamics:eciRelAcceleration[2]'>-2.38654122e+00</variable>
           <variable name='Dynamics:eciRelAcceleration[3]' units='m/s^2'
-           label='Dynamics:eciRelAcceleration[3]'>-8.53544581e-01</variable>
+           label='Dynamics:eciRelAcceleration[3]'>3.16644540e-01</variable>
           <variable name='Dynamics:eciRelAngVelBody[1]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[1]'>2.80251707e+02</variable>
+           label='Dynamics:eciRelAngVelBody[1]'>1.91885104e+02</variable>
           <variable name='Dynamics:eciRelAngVelBody[2]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[2]'>2.12315598e+00</variable>
+           label='Dynamics:eciRelAngVelBody[2]'>5.09790386e-01</variable>
           <variable name='Dynamics:eciRelAngVelBody[3]' units='deg/s'
-           label='Dynamics:eciRelAngVelBody[3]'>-6.89477212e-01</variable>
+           label='Dynamics:eciRelAngVelBody[3]'>-1.69476426e-01</variable>
           <variable name='Dynamics:eciRelEulerAngles.phi' units='deg'
-           label='Dynamics:eciRelEulerAngles.phi'>1.57265508e+02</variable>
+           label='Dynamics:eciRelEulerAngles.phi'>-2.56761377e+01</variable>
           <variable name='Dynamics:eciRelEulerAngles.psi' units='deg'
-           label='Dynamics:eciRelEulerAngles.psi'>1.39856219e+02</variable>
+           label='Dynamics:eciRelEulerAngles.psi'>1.37695517e+02</variable>
           <variable name='Dynamics:eciRelEulerAngles.theta' units='deg'
-           label='Dynamics:eciRelEulerAngles.theta'>2.26063689e-01</variable>
+           label='Dynamics:eciRelEulerAngles.theta'>-2.14895390e-01</variable>
           <variable name='Dynamics:eciRelPosition[1]' units='m'
-           label='Dynamics:eciRelPosition[1]'>6.38673779e+06</variable>
+           label='Dynamics:eciRelPosition[1]'>6.39286149e+06</variable>
           <variable name='Dynamics:eciRelPosition[2]' units='m'
-           label='Dynamics:eciRelPosition[2]'>3.18715087e+05</variable>
+           label='Dynamics:eciRelPosition[2]'>2.37725974e+05</variable>
           <variable name='Dynamics:eciRelPosition[3]' units='m'
-           label='Dynamics:eciRelPosition[3]'>4.74610520e-01</variable>
+           label='Dynamics:eciRelPosition[3]'>1.15242791e+00</variable>
           <variable name='Dynamics:eciRelVelocity[1]' units='m/s'
-           label='Dynamics:eciRelVelocity[1]'>-1.00781826e+03</variable>
+           label='Dynamics:eciRelVelocity[1]'>-8.00862742e+02</variable>
           <variable name='Dynamics:eciRelVelocity[2]' units='m/s'
-           label='Dynamics:eciRelVelocity[2]'>1.30583581e+03</variable>
+           label='Dynamics:eciRelVelocity[2]'>1.17567615e+03</variable>
           <variable name='Dynamics:eciRelVelocity[3]' units='m/s'
-           label='Dynamics:eciRelVelocity[3]'>-1.15471353e-01</variable>
+           label='Dynamics:eciRelVelocity[3]'>1.61946016e-01</variable>
           <variable name='Dynamics:specificForceBody[1]' units='m/s^2'
-           label='Dynamics:specificForceBody[1]'>-6.60871523e+00</variable>
+           label='Dynamics:specificForceBody[1]'>-3.25655923e+00</variable>
           <variable name='Dynamics:specificForceBody[2]' units='m/s^2'
-           label='Dynamics:specificForceBody[2]'>-1.54893049e+00</variable>
+           label='Dynamics:specificForceBody[2]'>-3.48051455e-01</variable>
           <variable name='Dynamics:specificForceBody[3]' units='m/s^2'
-           label='Dynamics:specificForceBody[3]'>3.04697190e-01</variable>
+           label='Dynamics:specificForceBody[3]'>1.97565830e-01</variable>
           <variable name='MassProperties:mass' units='kg'
-           label='MassProperties:mass'>2.30073133e+03</variable>
+           label='MassProperties:mass'>2.60045762e+03</variable>
         </variables>
       </event>
     </events>

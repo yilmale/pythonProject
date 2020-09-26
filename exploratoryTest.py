@@ -68,6 +68,8 @@ def simulate(**arg):
     gd = nx.density(er)
     return {'density': gd}
 
+
+
 if __name__ == '__main__':
     ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
     ema_logging.log_to_stderr(ema_logging.INFO)
@@ -101,5 +103,14 @@ if __name__ == '__main__':
     print(data)
     print(y)
 
+    inputMap = {}
+    count = 0
+    for i in model.uncertainties:
+        inputMap[count] = i.variable_name[0]
+        count = count +1
 
+    for i in model.levers:
+       inputMap[count] = i.variable_name[0]
+       count = count +1
 
+    print(inputMap)

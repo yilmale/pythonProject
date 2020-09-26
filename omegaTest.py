@@ -33,7 +33,7 @@ modelsDirectory = 'C:\OMEGA\OMEGA\MODELS'
 
 
 o = pyomega(omiFilename=omiFilePath, omegaDirectory=omegaDirectory)
-
+o.printOutput = False
 
 def omegaDriver(r, m, alt):
         o.reset()
@@ -50,17 +50,16 @@ def omegaDriver(r, m, alt):
         return {'burnout': bOut,'impact': impactTime, 'apogeeAlt': apogeeAlt, 'apogeeTime': apogeeTime}
 
 
-def setUpExperiment(*arg):
+def setUpExperiment(**arg):
     for i in range(0, len(arg)):
-        #print('value of ', inputMap[i], ' is ', arg[i])
-        setVariable(inputMap[i],arg[i])
+        setVariable(inputMap[i],arg[inputMap[i]])
 
 def setVariable(vname, val):
     o.omi.set(vname,val)
 
 def collectOutputs(e,m):
     outputs = {}
-    for i in outputMap.values():
+    for i in outputMap.keys():
         f = outputMap[i]
         r = f(e,m)
         outputs[i] = r
@@ -79,28 +78,38 @@ def getapogeeTime(e,m):
     return e.at[3, 'eventTime']
 
 
-def omegaDriver1(*arg):
+def generateInputMap(m):
+    inputMap = {}
+    count = 0
+    for i in m.uncertainties:
+        inputMap[count] = i.variable_name[0]
+        count = count + 1
+
+    for i in m.levers:
+        inputMap[count] = i.variable_name[0]
+        count = count + 1
+    return(inputMap)
+
+def omegaDriver1(**arg):
     o.reset()
-    setUpExperiment(*arg)
-    o.run()
+    setUpExperiment(**arg)
+    o.run(method = 'feed')
     events = o.data.events['SCUDB']
     metrics = o.data.endOfRun['SCUDB']
-    out = collectOutputs(events,metrics)
+    out = collectOutputs(events, metrics)
     return out
 
-
 if __name__ == '__main__':
-
     ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
     ema_logging.log_to_stderr(ema_logging.INFO)
 
-    model = Model('omegaDriver', function=omegaDriver)  # instantiate the model
+    model = Model('omegaDriver', function=omegaDriver1)  # instantiate the model
     # specify uncertainties
 
-    model.uncertainties = [RealParameter("r", 100000.0, 200000.0),
-                           RealParameter("alt",15000.0,20000.0)]
+    model.uncertainties = [RealParameter("SCUDB.targetRange", 100000.0, 200000.0),
+                           RealParameter("SCUDB.targetAltitude",15000.0,20000.0)]
 
-    model.levers = [RealParameter("m", 5000.0, 6000.0)]
+    model.levers = [RealParameter("SCUDB.MassProperties.initialMass", 5000.0, 6000.0)]
 
     # specify outcomes
     model.outcomes = [ScalarOutcome('burnout'),
@@ -109,8 +118,7 @@ if __name__ == '__main__':
                       ScalarOutcome('apogeeTime')]
 
     #model.constants = [Constant('replications', 10)]
-
-    inputMap = {0: 'r', 1: 'm', 2: 'alt'}
+    inputMap = generateInputMap(model)
     outputMap = {'burnout': getBurnOut, 'impact': getImpactTime,
                  'apogeeAlt': getapogeeAlt, 'apogeeTime': getapogeeTime}
 
@@ -120,12 +128,12 @@ if __name__ == '__main__':
     res = perform_experiments(model, n_scenarios, n_policies)
 
     experiments, outcomes = res
-    data = experiments[['r', 'm', 'alt']]
+    data = experiments[['SCUDB.targetRange',
+                        'SCUDB.MassProperties.initialMass',
+                        'SCUDB.targetAltitude']]
 
-    data.to_csv('outOmega.csv', index=False)
+    #data.to_csv('outOmega.csv', index=False)
 
-    experiments, outcomes = res
-    data = experiments[['r', 'm', 'alt']]
     #data.to_csv('outExperiment.csv', index=False)
     frame ={'burnout': outcomes['burnout'], 'impact': outcomes['impact'],
             'apogeeAlt': outcomes['apogeeAlt'], 'apogeeTime': outcomes['apogeeTime']}
