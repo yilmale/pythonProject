@@ -51,19 +51,15 @@ def simulate_ER(n = 10, p=0.5, replications = 10):
     density = cum/replications
     return {'density': density}
 
-
-def funcTest(*arg):
-    print(arg[0])
-    mapper = arg[0]
-    for i in range(1,len(arg)):
-        print('value of ', mapper[i-1], ' is ', arg[i])
-
-
+def setUp(*arg):
+    for i in range(0, len(arg)):
+        print('value of ', mapper[i], ' is ', arg[i])
 
 if __name__ == '__main__':
     ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
     ema_logging.log_to_stderr(ema_logging.INFO)
 
+    mapper = {0: 'n', 1: 'p'}
     model = Model('SimulateER', function=simulate_ER)  # instantiate the model
     # specify uncertainties
     model.uncertainties = [RealParameter("p", 0.1, 1.0)]
@@ -92,7 +88,3 @@ if __name__ == '__main__':
     print(data)
     print(y)
 
-    n = 10
-    p = 20
-    varMap = {0 : 'n', 1 : 'p'}
-    funcTest(varMap,1,2)

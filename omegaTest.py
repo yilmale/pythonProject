@@ -2,7 +2,7 @@ from __future__ import (absolute_import, print_function, division,
                         unicode_literals)
 from omegaPythonTools import pyomega
 from omegaPythonTools import omiEditor
-import omegaJupyterNotebookTools as ojnt
+#import omegaJupyterNotebookTools as ojnt
 
 from ema_workbench import (Model, RealParameter, MultiprocessingEvaluator, CategoricalParameter,
                            IntegerParameter, ScalarOutcome, ArrayOutcome, Constant, ema_logging,
@@ -50,6 +50,45 @@ def omegaDriver(r, m, alt):
         return {'burnout': bOut,'impact': impactTime, 'apogeeAlt': apogeeAlt, 'apogeeTime': apogeeTime}
 
 
+def setUpExperiment(*arg):
+    for i in range(0, len(arg)):
+        #print('value of ', inputMap[i], ' is ', arg[i])
+        setVariable(inputMap[i],arg[i])
+
+def setVariable(vname, val):
+    o.omi.set(vname,val)
+
+def collectOutputs(e,m):
+    outputs = {}
+    for i in outputMap.values():
+        f = outputMap[i]
+        r = f(e,m)
+        outputs[i] = r
+    return outputs
+
+def getBurnOut(e,m):
+    return e.at[2, 'eventTime']
+
+def getImpactTime(e,m):
+    return m.at[0, 'simTime']
+
+def getapogeeAlt(e,m):
+    return m.at[0, 'Dynamics:apogeeAlt']
+
+def getapogeeTime(e,m):
+    return e.at[3, 'eventTime']
+
+
+def omegaDriver1(*arg):
+    o.reset()
+    setUpExperiment(*arg)
+    o.run()
+    events = o.data.events['SCUDB']
+    metrics = o.data.endOfRun['SCUDB']
+    out = collectOutputs(events,metrics)
+    return out
+
+
 if __name__ == '__main__':
 
     ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
@@ -71,8 +110,12 @@ if __name__ == '__main__':
 
     #model.constants = [Constant('replications', 10)]
 
-    n_scenarios = 10
-    n_policies = 10
+    inputMap = {0: 'r', 1: 'm', 2: 'alt'}
+    outputMap = {'burnout': getBurnOut, 'impact': getImpactTime,
+                 'apogeeAlt': getapogeeAlt, 'apogeeTime': getapogeeTime}
+
+    n_scenarios = 3
+    n_policies = 3
 
     res = perform_experiments(model, n_scenarios, n_policies)
 
@@ -83,14 +126,13 @@ if __name__ == '__main__':
 
     experiments, outcomes = res
     data = experiments[['r', 'm', 'alt']]
-    data.to_csv('outExperiment.csv', index=False)
+    #data.to_csv('outExperiment.csv', index=False)
     frame ={'burnout': outcomes['burnout'], 'impact': outcomes['impact'],
             'apogeeAlt': outcomes['apogeeAlt'], 'apogeeTime': outcomes['apogeeTime']}
     y = pd.DataFrame(frame,columns=['burnout','impact','apogeeAlt','apogeeTime'])
-    y.to_csv('outResults.csv')
+    #y.to_csv('outResults.csv')
     print(data)
-    print(res)
-
+    print(y)
 
 
 
