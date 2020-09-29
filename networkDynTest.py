@@ -78,9 +78,14 @@ if __name__ == '__main__':
     """
     experiments, outcomes = res
     data= experiments[['n', 'p']]
+    data.to_csv('outExperiment.csv',index=False)
+    y = pd.DataFrame(outcomes['density'],columns=['density'])
+    print(y)
+    y.to_csv('outResults.csv')
+    z = pd.read_csv('outResults.csv',)
+    print(z['density'])
 
-    data.to_csv('out.csv',index=False)
-
+''' 
 #-----------------------FeatureScoring-------------------------------------------
     z = feature_scoring.get_feature_scores_all(x=data,y=outcomes)
 
@@ -149,7 +154,7 @@ clf = tree.DecisionTreeClassifier(random_state=0, max_depth=3)
 clf = clf.fit(X,y)
 r = export_text(clf)
 print(r)
-
+'''
 
 
 

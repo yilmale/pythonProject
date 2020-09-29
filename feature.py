@@ -30,7 +30,7 @@ class Optional(CompositeExpression):
     def __init__(self, fl):
         self.op = fl
 
-class Alternative(FeatureExpression):
+class Alternative(CompositeExpression):
     kind = "Alternative"
     def __init__(self, fl):
         self.op = fl
