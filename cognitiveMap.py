@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import random
+from feature import (FM,Mandatory,Optional,P, Alternative)
 
 default_INACTIVE = 0.0
 default_ACTIVE = 1.0
@@ -96,17 +97,26 @@ initialColorCode =setNodeColors(G)
 activations = coherenceMaximizer(G)
 print(activations)
 
-
 finalColorCode = setNodeColors(G)
 
-
+plt.figure(figsize=[15,10])
 plt.subplot(121)
 nx.draw(G, with_labels=True, node_color=initialColorCode,
-        edge_color= edgeColor, pos = nx.planar_layout(G), font_weight='bold')
+        edge_color= edgeColor, pos = nx.planar_layout(G), font_weight='bold',
+        node_size=[1000,300,300,300,300])
 plt.subplot(122)
 nx.draw(G, with_labels=True, node_color=finalColorCode,
         edge_color= edgeColor, pos = nx.planar_layout(G), font_weight='bold')
 plt.show()
 
-
+fm = FM('ParameterFeatureTree',[
+          Mandatory([FM('context',
+                        [Mandatory(FM('X',Alternative([P('A'),P('B')]))),
+                        Optional([P('b'),P('q'),P('mean')])])]),
+          Mandatory([FM('design',
+                        [Optional([P('delta'),P('stddev')])])]),
+          Mandatory([FM('outcomes',
+                        [Optional([P('max_P'),P('utility'),P('inertia'),P('reliability')])])]),
+          ]
+         )
 
