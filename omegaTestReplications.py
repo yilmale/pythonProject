@@ -23,6 +23,7 @@ from sklearn import tree
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.tree import export_text
 
+import random
 
 omiFilePath = 'C:\OMEGA\OMEGA\MODELS\SRBM\SCUD_Variants\scudb\scudb.omi'
 omegaDirectory = 'C:\OMEGA\OMEGA'
@@ -96,15 +97,24 @@ def generateAnalysisFrame(mod,out):
         frameSchema = frameSchema + u.variable_name
     return outFrame,frameSchema
 
+def randomize(spec):
+    spec.set('SCUDB.Propulsion.mainPurgeThrust', random.uniform(10.0,20.0))
 
 def omegaDriver(**arg):
+    outFinal = {}
+    for i in outputMap.keys():
+        outFinal[i] = []
     o.reset()
     setUpExperiment(**arg)
-    o.run()
-    events = o.data.events[PLAYER]
-    metrics = o.data.endOfRun[PLAYER]
-    out = collectOutputs(events, metrics)
-    return out
+    for r in range(0,REPLICATIONS):
+        randomize(o.omi)
+        o.run()
+        events = o.data.events[PLAYER]
+        metrics = o.data.endOfRun[PLAYER]
+        out = collectOutputs(events, metrics)
+        for i in outputMap.keys():
+            outFinal[i].append(out[i])
+    return outFinal
 
 
 if __name__ == '__main__':
@@ -120,10 +130,10 @@ if __name__ == '__main__':
 
     model.levers = [RealParameter("SCUDB.MassProperties.initialMass", 5000.0, 6000.0)]
 
-    model.outcomes = [ScalarOutcome('burnout'),
-                      ScalarOutcome('impact'),
-                      ScalarOutcome('apogeeAlt'),
-                      ScalarOutcome('apogeeTime')]
+    model.outcomes = [ArrayOutcome('burnout'),
+                      ArrayOutcome('impact'),
+                      ArrayOutcome('apogeeAlt'),
+                      ArrayOutcome('apogeeTime')]
 
     #model.constants = [Constant('replications', 10)]
 
@@ -134,78 +144,11 @@ if __name__ == '__main__':
 
     experiments, outcomes = res
 
-    data = experiments[getFactors(model)]
+    #data = experiments[getFactors(model)]
 
-    frame,schema = generateAnalysisFrame(model,outcomes)
-    y = pd.DataFrame(frame, columns=schema)
+    #frame, schema = generateAnalysisFrame(model, outcomes)
+    #y = pd.DataFrame(frame, columns=schema)
 
-    print(data)
-    print(y)
+    print(experiments)
+    print(res)
 
-    o.omi.show()
-
-
-''' 
-e = omiEditor(omiFilePath)
-e.show()
-
-o = pyomega(omiFilename=omiFilePath, omegaDirectory= omegaDirectory)
-o.run()
-df = o.data.getData()
-df.to_csv('outTest.csv')
-df1 = o.data.timeHistory['SCUDB']
-thrust = df1[['simTime','Propulsion:deliveredThrust']]
-
-found = False
-for ind in thrust.index:
-    if (thrust['Propulsion:deliveredThrust'][ind] > 0.0):
-        found = True
-    elif (thrust['Propulsion:deliveredThrust'][ind] == 0) and (found == True):
-       print('Burnout: ', thrust['simTime'][ind], thrust['Propulsion:deliveredThrust'][ind])
-       break
-
-print(thrust[['Propulsion:deliveredThrust']])
-
-#x= o.omi.get('SCUDB.targetRange')
-#print(x)
-o.omi.set('SCUDB.targetRange', 100000.0)
-#print('updated: ', o.omi.get('SCUDB.targetRange'))
-
-#print(o.omi)
-
-o.run()
-
-print(o.data.endOfRun['SCUDB'])
-metrics = o.data.endOfRun['SCUDB']
-print(metrics.columns)
-print('*******************************************************')
-print(o.data.events['SCUDB'])
-
-x=o.data.events['SCUDB']
-print(x['eventTime'])
-print(x.columns)
-
-
-o.omi.set('SCUDB.targetRange', 100000.0)
-o.run()
-events = o.data.events['SCUDB']
-print(events)
-print(events['eventTime'])
-
-print(events.columns)
-print('***************************************')
-print(o.data.endOfRun['SCUDB'])
-metrics = o.data.endOfRun['SCUDB']
-print(metrics.columns)
-
-print('impact time is ', metrics.at[0,'simTime'])
-print('apogee alt is ', metrics.at[0,'Dynamics:apogeeAlt'])
-print('burnout is ', events.at[2,'eventTime'])
-print('apogee time is',events.at[3,'eventTime'])
-
-print(o.omi.help('SCUDB.targetInputOption'))
-print(o.omi.help('SCUDB.windOption'))
-print(o.omi.help('SCUDB.MassProperties.initialMass'))
-print(o.omi.help('SCUDB.targetRange'))
-
-'''
