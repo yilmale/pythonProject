@@ -16,7 +16,7 @@ class P(FeatureExpression):
         self.name = fname
 
 
-class Requires(FeatureExpression, FeatureExpression):
+class Requires(FeatureExpression):
     kind = "Constraint"
     def __init__(self, srcname, tgtname):
         self.source = srcname
