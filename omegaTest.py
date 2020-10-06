@@ -127,8 +127,8 @@ if __name__ == '__main__':
 
     #model.constants = [Constant('replications', 10)]
 
-    n_contextScenarios = 3
-    n_designPolicies = 3
+    n_contextScenarios = 10
+    n_designPolicies = 10
 
     res = perform_experiments(model, n_contextScenarios, n_designPolicies, levers_sampling=LHS)
 
@@ -142,7 +142,9 @@ if __name__ == '__main__':
     print(data)
     print(y)
 
-    o.omi.show()
+    data.to_csv('omegaExperiment.csv')
+    y.to_csv('omegaResults.csv')
+
 
 
 ''' 
