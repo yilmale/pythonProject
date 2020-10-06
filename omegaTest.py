@@ -127,8 +127,8 @@ if __name__ == '__main__':
 
     #model.constants = [Constant('replications', 10)]
 
-    n_contextScenarios = 10
-    n_designPolicies = 10
+    n_contextScenarios = 15
+    n_designPolicies = 15
 
     res = perform_experiments(model, n_contextScenarios, n_designPolicies, levers_sampling=LHS)
 
