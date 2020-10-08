@@ -39,7 +39,7 @@ class FCM:
         return delta
 
     def updateNodeActivation(self,n):
-        beforeUpdate = G.nodes[n]['activation']
+        beforeUpdate = self.G.nodes[n]['activation']
         if self.G.nodes[n]['clamped'] == False:
             net = 0.0
             adj = self.G.adj[n]
