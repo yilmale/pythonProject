@@ -18,11 +18,11 @@ BLUE = "#95d0fc"
 def updateActivations(G):
     delta = 0.0
     for n in G.nodes:
-        d = updateNodeActivation(n)
+        d = updateNodeActivation(G,n)
         delta = max(delta,d)
     return(delta)
 
-def updateNodeActivation(n):
+def updateNodeActivation(G,n):
     beforeUpdate = G.nodes[n]['activation']
     if G.nodes[n]['clamped'] == False:
         net = 0.0
