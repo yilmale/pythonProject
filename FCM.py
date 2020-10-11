@@ -6,7 +6,6 @@ import random
 default_INACTIVE = 0.0
 default_ACTIVE = 1.0
 default = 0.01
-decay = 0.05
 MAX = 1.0
 MIN = -1.0
 Delta = 0.005
@@ -23,12 +22,9 @@ class FCM:
         for n in nodes:
             self.G.add_node(n[0], activation=n[1], clamped=False)
             self.A_t[n[0]]=n[1]
-
         for e in dependencies:
             self.G.add_edge(e[0], e[1], weight=e[2])
-
         self.I = input
-
 
     def updateActivations(self):
         for n in self.G.nodes:
@@ -107,12 +103,6 @@ fcm = FCM(nodes,dependencies,input)
 print('Initial activations: ', fcm.getActivations())
 print('Simulating....')
 fcm.simulate_synchronous()
-
-
-
-
-
-
 
 
 ''' 
