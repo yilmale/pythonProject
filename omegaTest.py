@@ -148,7 +148,7 @@ if __name__ == '__main__':
     y.to_csv('omegaResults.csv')
     '''
     # -----------------------FeatureScoring-------------------------------------------
-    '''
+
     data = pd.read_csv('omegaExperiment.csv')
     outcomes = pd.read_csv('omegaResults.csv')
 
@@ -220,7 +220,7 @@ if __name__ == '__main__':
     fig.set_size_inches(8, 6)
     fig.subplots_adjust(bottom=0.3)
     plt.show()
-
+    '''
 
 
 ''' 
