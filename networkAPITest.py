@@ -78,6 +78,8 @@ def analyze_RandomNetwork():
 
     Si = sobol.analyze(problem, Y)
     print(Si['S1'])
+    print('interactions')
+    print(Si['S2'])
 
     print("x1-x2:", Si['S2'][0, 1])
     print("x1-x3:", Si['S2'][0, 2])
