@@ -128,7 +128,7 @@ if __name__ == '__main__':
                       ScalarOutcome('apogeeTime')]
 
     #model.constants = [Constant('replications', 10)]
-    '''    
+
     n_contextScenarios = 10
     n_designPolicies = 10
 
@@ -146,7 +146,7 @@ if __name__ == '__main__':
 
     data.to_csv('omegaExperiment.csv')
     y.to_csv('omegaResults.csv')
-    '''
+
     # -----------------------FeatureScoring-------------------------------------------
 
     data = pd.read_csv('omegaExperiment.csv')
@@ -191,7 +191,7 @@ if __name__ == '__main__':
 
     sns.heatmap(z, cmap='viridis', annot=True)
     plt.show()
-    '''
+
    # -------------------------------Sobol Analysis--------------------------------
 
     from SALib.analyze import sobol
@@ -220,7 +220,7 @@ if __name__ == '__main__':
     fig.set_size_inches(8, 6)
     fig.subplots_adjust(bottom=0.3)
     plt.show()
-    '''
+
 
 
 ''' 

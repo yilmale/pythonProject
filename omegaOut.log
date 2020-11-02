@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <omega>
   <log>
-    <date>Mon Nov  2 10:57:41 2020</date>
+    <date>Mon Nov  2 14:29:12 2020</date>
     <version>2020.08.19 (OMEGASource: c660945 Common: b1b60190)</version>
     <host>DESKTOP-EQH1J1J</host>
     <commandLine numArguments='7'>
@@ -16,9 +16,9 @@
     <input fileref="C:\Users\yilma\PycharmProjects\pythonProject\scudb.omi"/>
     <output path="C:\Users\yilma\PycharmProjects\pythonProject" prefix="omegaOut"/>
     <cases>
-      <case id="1" date="Mon Nov  2 10:57:41 2020">
+      <case id="1" date="Mon Nov  2 14:29:12 2020">
         <runs>
-          <run id="1" date="Mon Nov  2 10:57:41 2020">
+          <run id="1" date="Mon Nov  2 14:29:12 2020">
             <dataset name="SCUDB"/>
             <timeHistoryOutput type="binary">C:\Users\yilma\PycharmProjects\pythonProject\omegaOutC1R1.dat</timeHistoryOutput>
             <eventsOutput type="xml">C:\Users\yilma\PycharmProjects\pythonProject\omegaOutC1R1_events.xml</eventsOutput>
@@ -37,20 +37,20 @@
               SCUDB: conditional output: Launch occurred at 0 s.
               SCUDB: conditional output: Missile Liftoff occurred at 0.48 s.
               SCUDB:Autopilot  Thrust Termination
-                 Time: 58.2964 s after liftoff, 58.7739 s after launch.
-                 True Velocity Magnitude: 1302.98 m/s
-                 Range PIGA Reading: 1780.18 m/s
+                 Time: 52.5322 s after liftoff, 53.0097 s after launch.
+                 True Velocity Magnitude: 1220.26 m/s
+                 Range PIGA Reading: 1665.26 m/s
               
               SCUDB: Stage 1 main engine thrust terminated.
-                Simulation time: 58.7739 sec.  TOF: 58.2964 sec.  Velocity: 1302.98 m/s.
-              SCUDB: conditional output: End Powered Flight occurred at 58.875 s.
-              SCUDB: conditional output: RV Apogee occurred at 153.605 s.
-              SCUDB: conditional output: RV Impact occurred at 254.063 s.
-              SSM player SCUDB impacted at time: 254.063
-              DCU Target rel position (m): [ 52.2127, 6.55463, -0.000234403 ]  52.6225
-                Distance from launch (km): 195.853
-                Impact azimuth (deg): 89.9981
-                Impact velocity (m/s): 1285.23
+                Simulation time: 53.0097 sec.  TOF: 52.5322 sec.  Velocity: 1220.26 m/s.
+              SCUDB: conditional output: End Powered Flight occurred at 53.11 s.
+              SCUDB: conditional output: RV Apogee occurred at 143.47 s.
+              SCUDB: conditional output: RV Impact occurred at 239.247 s.
+              SSM player SCUDB impacted at time: 239.247
+              DCU Target rel position (m): [ 86.0619, 4.53108, -0.000590878 ]  86.1811
+                Distance from launch (km): 167.762
+                Impact azimuth (deg): 89.9985
+                Impact velocity (m/s): 1183.69
               
               End run for player: SCUDB
               
@@ -61,7 +61,7 @@
         <endOfRunOutput type="ascii">C:\Users\yilma\PycharmProjects\pythonProject\omegaOutC1_endOfRun.asc</endOfRunOutput>
       </case>
     </cases>
-    <elapsedTime>2.898</elapsedTime>
+    <elapsedTime>2.887</elapsedTime>
     <status complete="true" success="true"/>
   </log>
 </omega>
