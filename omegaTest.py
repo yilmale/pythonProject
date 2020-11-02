@@ -17,6 +17,8 @@ from ema_workbench.analysis import scenario_discovery_util as sdutil
 import pandas as pd
 import seaborn as sns
 
+import matplotlib.pyplot as plt
+
 import numpy as np
 
 from sklearn import tree
@@ -126,9 +128,9 @@ if __name__ == '__main__':
                       ScalarOutcome('apogeeTime')]
 
     #model.constants = [Constant('replications', 10)]
-
-    n_contextScenarios = 15
-    n_designPolicies = 15
+    '''    
+    n_contextScenarios = 10
+    n_designPolicies = 10
 
     res = perform_experiments(model, n_contextScenarios, n_designPolicies, levers_sampling=LHS)
 
@@ -144,6 +146,80 @@ if __name__ == '__main__':
 
     data.to_csv('omegaExperiment.csv')
     y.to_csv('omegaResults.csv')
+    '''
+    # -----------------------FeatureScoring-------------------------------------------
+    '''
+    data = pd.read_csv('omegaExperiment.csv')
+    outcomes = pd.read_csv('omegaResults.csv')
+
+    data = data[['SCUDB.targetRange','SCUDB.targetAltitude','SCUDB.MassProperties.initialMass']]
+    outcomes = outcomes[['burnout','impact','apogeeAlt','apogeeTime']]
+
+    print(data)
+    print(outcomes)
+     
+    z = feature_scoring.get_feature_scores_all(x=data, y=outcomes)
+
+    print(z)
+    print('initialMass -- burnout: ')
+    print(z.at['SCUDB.MassProperties.initialMass', 'burnout'])
+    print('initialMass -- impact: ')
+    print(z.at['SCUDB.MassProperties.initialMass', 'impact'])
+    print('initialMass -- apogeeAlt: ')
+    print(z.at['SCUDB.MassProperties.initialMass', 'apogeeAlt'])
+    print('initialMass -- apogeeAlt: ')
+    print(z.at['SCUDB.MassProperties.initialMass', 'apogeeAlt'])
+
+
+    print('targetAltitude -- burnout: ')
+    print(z.at['SCUDB.targetAltitude', 'burnout'])
+    print('targetAltitude -- impact: ')
+    print(z.at['SCUDB.targetAltitude', 'impact'])
+    print('targetAltitude -- apogeeAlt: ')
+    print(z.at['SCUDB.targetAltitude', 'apogeeAlt'])
+    print('targetAltitude -- apogeeAlt: ')
+    print(z.at['SCUDB.targetAltitude', 'apogeeAlt'])
+
+    print('targetRange -- burnout: ')
+    print(z.at['SCUDB.targetRange', 'burnout'])
+    print('targetRange -- impact: ')
+    print(z.at['SCUDB.targetRange', 'impact'])
+    print('targetRange -- apogeeAlt: ')
+    print(z.at['SCUDB.targetRange', 'apogeeAlt'])
+    print('targetRange -- apogeeAlt: ')
+    print(z.at['SCUDB.targetRange', 'apogeeAlt'])
+
+    sns.heatmap(z, cmap='viridis', annot=True)
+    plt.show()
+    '''
+   # -------------------------------Sobol Analysis--------------------------------
+
+    from SALib.analyze import sobol
+    from ema_workbench.em_framework.salib_samplers import get_SALib_problem
+
+    res = perform_experiments(model, scenarios = 10, uncertainty_sampling = 'sobol')
+    experiments, outcomes = res
+    problem = get_SALib_problem(model.uncertainties)
+    Si = sobol.analyze(problem, outcomes['apogeeAlt'],
+                       calc_second_order=True, print_to_console=False)
+
+    print(Si['S1'])
+    print('interactions')
+    print(Si['S2'])
+
+    scores_filtered = {k: Si[k] for k in ['ST', 'ST_conf', 'S1', 'S1_conf']}
+    Si_df = pd.DataFrame(scores_filtered, index=problem['names'])
+
+    sns.set_style('white')
+    fig, ax = plt.subplots(1)
+
+    indices = Si_df[['S1', 'ST']]
+    err = Si_df[['S1_conf', 'ST_conf']]
+
+    indices.plot.bar(yerr=err.values.T, ax=ax)
+    fig.set_size_inches(8, 6)
+    fig.subplots_adjust(bottom=0.3)
+    plt.show()
 
 
 
