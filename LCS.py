@@ -126,7 +126,7 @@ model.run(scenario,learn=True)
 print(model)
 '''
 
-RANGE_MID = 160000.00
+RANGE_MID = 180000.00
 ALT_MID = 17500.00
 MASS_MID = 5500.00
 
@@ -211,7 +211,7 @@ for x in range(len(rangeSeries)):
 
 print(bStr)
 
-scenario = ScenarioObserver(TestProblem(bStr,training_cycles=1000))
+scenario = ScenarioObserver(TestProblem(bStr,training_cycles=15000))
 
 algorithm = XCSAlgorithm()
 algorithm.exploration_probability = .1
@@ -220,7 +220,7 @@ algorithm.ga_threshold = 1
 algorithm.crossover_probability = .5
 algorithm.do_action_set_subsumption = True
 algorithm.do_ga_subsumption = False
-algorithm.wildcard_probability = .7
+algorithm.wildcard_probability = .5
 algorithm.deletion_threshold = 1
 algorithm.mutation_probability = .002
 
@@ -229,6 +229,7 @@ model = algorithm.new_model(scenario)
 model.run(scenario,learn=True)
 
 print(model)
+
 
 print(len(model))
 

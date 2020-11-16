@@ -16,6 +16,23 @@ import pandas as pd
 import seaborn as sns
 
 import matplotlib.pyplot as plt
+'''
+data = pd.read_csv('grainNov13.csv')
+
+experiment = data[['DBODY','PC','DNOSE','LNOSE','THROAT','LNOZ',
+                   'FN','TBURN','TRCR','TTR','TAILB2','TLE','TLEWINGLENGTH','LAUNCH']]
+
+outcomes = data[['burnout','RangeBurn','TOF','thrust','Range','Apogee']]
+
+print(experiment)
+
+z = feature_scoring.get_feature_scores_all(x=experiment, y=outcomes)
+
+print(z)
+
+sns.heatmap(z, cmap='viridis', annot=True)
+plt.show()
+ '''
 
 
 
