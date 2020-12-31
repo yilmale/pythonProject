@@ -211,6 +211,12 @@ for x in range(len(rangeSeries)):
 
 print(bStr)
 
+f = open("LCSOmegaData.txt","w")
+for i in bStr:
+    f.write(i)
+    f.write('\n')
+
+f.close()
 scenario = ScenarioObserver(TestProblem(bStr,training_cycles=15000))
 
 algorithm = XCSAlgorithm()
