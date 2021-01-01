@@ -58,7 +58,7 @@ def relativeRegret(data,outcomes,designParams,contextParams,outcomeParams):
     return (regret,contextSet,designSet)
 
 
-def minmax(dsg,ctx):
+def minmax(r,dsg,ctx):
     worstRegret = {}
     for d in dsg:
         rdata = []
@@ -120,7 +120,7 @@ print(r)
 print(ctx)
 print(dsg)
 
-a,b = minmax(dsg,ctx)
+a,b = minmax(r,dsg,ctx)
 print(a,b)
 
 '''
