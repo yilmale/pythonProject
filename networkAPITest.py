@@ -6,6 +6,7 @@ from SALib.analyze import sobol
 from SALib.test_functions import Ishigami
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def update(g,r):
     count = 0
@@ -56,6 +57,55 @@ def simulate_WattsStrogatz(n=10, k=3, p=0.5, f=0.3, replications = 30):
 
 
 
+def analyze_RandomNetwork():
+    problem = {
+        'num_vars': 3,
+        'names': ['n', 'p', 'f'],
+        'bounds': [[30, 100],
+                   [0.1, 0.9],
+                   [0.1, 0.7]]
+    }
+
+    param_values = saltelli.sample(problem, 50)
+    Y = np.zeros([param_values.shape[0]])
+    # Z = np.zeros([param_values.shape[0]])
+    # W = np.zeros([param_values.shape[0]])
+
+    for i, X in enumerate(param_values):
+        Y[i] = simulate_ER(X[0], X[1], X[2], replications=30)
+    #    Z[i] = simulate_PreferentialAttachment(int(X[0]),int(X[2]),X[3],replications=30)
+    #    W[i] = simulate_WattsStrogatz(int(X[0]), int(X[4]), X[1], replications=30)
+
+    Si = sobol.analyze(problem, Y)
+    print(Si['S1'])
+    print('interactions')
+    print(Si['S2'])
+
+    print("x1-x2:", Si['S2'][0, 1])
+    print("x1-x3:", Si['S2'][0, 2])
+    print("x2-x3:", Si['S2'][1, 2])
+
+    df = pd.DataFrame(data=param_values, columns=['n', 'p', 'f'])
+    dfout = pd.DataFrame(data=Y, columns=['Sf'])
+    dffinal = df.join(dfout)
+    dfplt = dffinal[['f', 'Sf']]
+
+    dfplt.plot.scatter(x='f', y='Sf')
+    plt.savefig('outputscatter.png')
+
+    x = Si['S1']
+    params = ['n', 'p', 'f']
+    values = [x[0], x[1], x[2]]
+    d = {'params': params, 'values': values}
+    y = pd.DataFrame(data=d)
+    y.plot(kind='bar', x='params', y='values')
+    plt.savefig('outputbar.png')
+
+
+analyze_RandomNetwork()
+
+
+''' 
 problem = {
     'num_vars': 5,
     'names': ['n', 'p', 'm', 'f', 'k'],
@@ -65,22 +115,8 @@ problem = {
                [0.1, 0.7],
                [5,10]]
 }
+'''
 
-param_values = saltelli.sample(problem, 50)
-Y = np.zeros([param_values.shape[0]])
-Z = np.zeros([param_values.shape[0]])
-W = np.zeros([param_values.shape[0]])
 
-for i, X in enumerate(param_values):
-    Y[i] = simulate_ER(X[0],X[1],X[3],replications=30)
-    Z[i] = simulate_PreferentialAttachment(int(X[0]),int(X[2]),X[3],replications=30)
-    W[i] = simulate_PreferentialAttachment(int(X[0]), int(X[4]), X[1], replications=30)
-
-Si = sobol.analyze(problem,Y)
-print(Si['S1'])
-
-print("x1-x2:", Si['S2'][0,1])
-print("x1-x3:", Si['S2'][0,2])
-print("x2-x3:", Si['S2'][1,2])
 
 
