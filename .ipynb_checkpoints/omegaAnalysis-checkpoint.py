@@ -67,12 +67,14 @@ def minmax(r,dsg,ctx):
         elm = {d: rdata}
         worstRegret.update(elm)
 
+    print(worstRegret)
     maxs = []
     maxvs = []
     for d, l in worstRegret.items():
         maxs.append(max(l))
         maxvs.append((d, max(l)))
 
+    print(maxvs)
     minmax = min(maxs)
     minmaxKey=0
     for x in maxvs:
@@ -193,6 +195,3 @@ print(z3)
 
 z4 = feature_scoring.F_REGRESSION(X=data, y=outcomes['apogeeTime'])
 print(z4)
-
-
-
