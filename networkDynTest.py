@@ -85,22 +85,21 @@ if __name__ == '__main__':
     z = pd.read_csv('outResults.csv',)
     print(z['density'])
 
-''' 
-#-----------------------FeatureScoring-------------------------------------------
-    z = feature_scoring.get_feature_scores_all(x=data,y=outcomes)
+    # -----------------------FeatureScoring-------------------------------------------
+    z = feature_scoring.get_feature_scores_all(x=data, y=outcomes)
 
     print(z)
-    print(z.at['n','density'])
+    print(z.at['n', 'density'])
     print(z.at['p', 'density'])
 
-    z1 = feature_scoring.F_REGRESSION(X=data,y=outcomes['density'])
+    z1 = feature_scoring.F_REGRESSION(X=data, y=outcomes['density'])
     print(z1)
 
     x1 = outcomes['density']
     print(data)
 
-#-------------------PRIM------------------------------------
-    transformedY =[]
+    #-------------------PRIM------------------------------------
+    transformedY = []
     for i in range(x1.shape[0]):
         if x1[i] < 0.8:
             transformedY.append(0)
@@ -109,15 +108,18 @@ if __name__ == '__main__':
 
     y1 = np.array(transformedY)
 
-    print(y1)
+
+    print(data)
+    print(x1)
 
     prim_alg = prim.Prim(data, x1, threshold=0.9, peel_alpha=0.1, mode = sdutil.RuleInductionType.REGRESSION)
     box1 = prim_alg.find_box()
     box1.show_tradeoff()
     box1.inspect(style='table')
     box1.inspect(7,style='table')
-    #plt.show()
+    plt.show()
 
+''' 
 # -------------------------------------------------------
 
 airq = pd.read_csv("Airq.csv")
