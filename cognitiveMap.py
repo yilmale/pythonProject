@@ -1,7 +1,23 @@
-import networkx as nx
+from __future__ import (absolute_import, print_function, division,
+                        unicode_literals)
 import matplotlib.pyplot as plt
+
+import networkx as nx
 import random
-from feature import (FM,Mandatory,Optional,P, Alternative)
+from ema_workbench import (Model, RealParameter, MultiprocessingEvaluator, CategoricalParameter,
+                           IntegerParameter, ScalarOutcome, ArrayOutcome, Constant, ema_logging,
+                           perform_experiments)
+from ema_workbench.em_framework.evaluators import MC
+
+from ema_workbench.analysis import feature_scoring
+from ema_workbench.analysis import prim
+
+from ema_workbench.analysis import scenario_discovery_util as sdutil
+
+import pandas as pd
+import seaborn as sns
+
+import numpy as np
 
 default_INACTIVE = 0.0
 default_ACTIVE = 1.0
@@ -72,31 +88,74 @@ def setNodeColors(G):
             colorCode.append(BLUE)
     return colorCode
 
+def createPairs(nodes,w):
+    if (len(nodes) == 1):
+        pairs = []
+    else:
+        h = nodes.pop(0)
+        remainingNodes = nodes.copy()
+        pairs = createPairs(nodes,w)
+        ps=[]
+        for n in remainingNodes:
+            ps.append((h,n,w))
+        pairs = ps + pairs
+    return pairs
+
+def addEdge(G,nodes,target,ew):
+    for n in nodes:
+        G.add_edge(n,target,weight=ew/len(nodes))
+    pairs=createPairs(nodes,ew/len(nodes))
+    for i,j,w in pairs:
+        G.add_edge(i,j,weight=w)
 
 
-G = nx.Graph()
+def simulate_CM(a = 0.0, b=0.0):
+    G = nx.Graph()
+    G.clear()
+    G.add_node("A", activation=a, clamped=True)
+    G.add_node("B", activation=b, clamped=True)
+    G.add_node("C", activation=default, clamped=False)
+    G.add_node("D", activation=default, clamped=False)
+    G.add_node("E", activation=default, clamped=False)
 
-G.add_node("A", activation=default_ACTIVE, clamped=True)
-G.add_node("B", activation=default_INACTIVE, clamped=True)
-G.add_node("C", activation=default, clamped=False)
-G.add_node("D", activation=default, clamped=False)
-G.add_node("E", activation=default, clamped=False)
+    addEdge(G, ["C", "D"], "A", 1.0)
+    G.add_edge("E", "B", weight=1.0)
+    activations = coherenceMaximizer(G)
+    c = activations["C"]
+    d = activations["D"]
+    e = activations["E"]
+    return {'c': c, 'd': d, 'e': e}
 
-G.add_edge("A","C",weight=1.0)
-G.add_edge("B","C",weight=-1.0)
-G.add_edge("C","E",weight=1.0)
-G.add_edge("B","D",weight=1.0)
-G.add_edge("D","E",weight=-1.0)
 
-print('Initial activations: ', getActivations(G))
+if __name__ == '__main__':
+    ema_logging.LOG_FORMAT = '[%(name)s/%(levelname)s/%(processName)s] %(message)s'
+    ema_logging.log_to_stderr(ema_logging.INFO)
 
+    model = Model('SimulateCM', function=simulate_CM)  # instantiate the model
+    # specify uncertainties
+    model.uncertainties = [RealParameter("a", 0.1, 1.0)]
+
+    model.levers = [RealParameter("b", 0.0, 0.01)]
+
+    # specify outcomes
+    model.outcomes = [ScalarOutcome('c'),
+                      ScalarOutcome('d'),
+                      ScalarOutcome('e')]
+
+    #model.constants = [Constant('replications', 10)]
+
+    n_scenarios = 10
+    n_policies = 10
+
+    res = perform_experiments(model, n_scenarios, n_policies)
+
+    experiments, outcomes = res
+
+    print(experiments)
+    print(outcomes)
+
+''' 
 edgeColor = setEdgeColors(G)
-
-initialColorCode =setNodeColors(G)
-
-activations = coherenceMaximizer(G)
-print(activations)
-
 finalColorCode = setNodeColors(G)
 
 plt.figure(figsize=[15,10])
@@ -119,4 +178,4 @@ fm = FM('ParameterFeatureTree',[
                         [Optional([P('max_P'),P('utility'),P('inertia'),P('reliability')])])]),
           ]
          )
-
+'''
